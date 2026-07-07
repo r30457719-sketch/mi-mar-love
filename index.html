@@ -6,97 +6,38 @@
 
 <style>
 body{
-    background: linear-gradient(135deg,#ff5f9e,#7b2cff);
-    color:white;
-    font-family:Arial, sans-serif;
-    text-align:center;
-    margin-top:120px;
-}
-h1{
-    font-size:60px;
-}
-p{
-    font-size:24px;
-}
-</style>
-
-</head>
-<body>
-
-<div class="carta" onclick="this.classList.toggle('abierta')">
-    <div class="sobre"></div>
-
-    <div class="mensaje">
-        <h2>❤️ Para ti ❤️</h2>
-        <p>
-            Desde que llegaste a mi vida todo es más bonito.
-            Gracias por cada sonrisa y por existir.
-            Te quiero muchísimo. ❤️
-        </p>
-    </div>
-</div>
-
+  <!DOCTYPE html>
+<html>
+<head>
 <style>
 body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#ff5f9e,#7b2cff);
-    font-family:Arial;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
 }
 
-.carta{
-    position:relative;
-    width:320px;
-    height:220px;
-    cursor:pointer;
+.corazon{
+font-size:100px;
+animation:latido 1s infinite;
 }
 
-.sobre{
-    width:100%;
-    height:100%;
-    background:#ff8fb3;
-    position:absolute;
-    border-radius:10px;
+@keyframes latido{
+0%{transform:scale(1);}
+50%{transform:scale(1.3);}
+100%{transform:scale(1);}
 }
+</style>
+</head>
 
-.sobre::before{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:#ff6fa0;
-    clip-path:polygon(0 0,50% 55%,100% 0);
-    transform-origin:top;
-    transition:.8s;
-}
+<body>
 
-.mensaje{
-    position:absolute;
-    width:90%;
-    height:90%;
-    left:5%;
-    top:5%;
-    background:white;
-    color:#333;
-    border-radius:10px;
-    padding:20px;
-    box-sizing:border-box;
-    transform:translateY(40px);
-    opacity:0;
-    transition:.8s;
-}
+<div class="corazon">❤️</div>
 
-.abierta .sobre::before{
-    transform:rotateX(180deg);
-}
-
-.abierta .mensaje{
-    transform:translateY(-90px);
-    opacity:1;
-}
+</body>
+</html> 
 </style>
 
 <img src="WhatsApp Image 2026-07-06 at 9.29.22 PM.jpeg" width="300">
