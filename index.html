@@ -97,11 +97,6 @@ p{
 
 </head>
 <body>
-    <button id="botonFlores">🌸 No presiones este botón 🌸</button>
-
-<div id="mensaje">
-  ❤️ Sabía que lo ibas a presionar... Esta sorpresa es para ti. ❤️
-</div>
     <div class="tortuga">
     <div class="caparazon"></div>
 
@@ -123,78 +118,10 @@ p{
     te quiero muchisiimo.</p>
 
 </body>
-    <script>
-const boton = document.getElementById("botonFlores");
-const mensaje = document.getElementById("mensaje");
-
-boton.onclick = function(){
-
-    mensaje.style.display = "block";
-
-    for(let i=0;i<250;i++){
-
-        let flor = document.createElement("div");
-        flor.className = "flor";
-        flor.innerHTML = ["🌸","🌹","🌺","💮"][Math.floor(Math.random()*4)];
-
-        flor.style.left = Math.random()*window.innerWidth+"px";
-        flor.style.animationDuration = (3+Math.random()*4)+"s";
-        flor.style.fontSize = (20+Math.random()*25)+"px";
-
-        document.body.appendChild(flor);
-
-        setTimeout(()=>{
-            flor.remove();
-        },7000);
-    }
-}
 </script>
 </html>
 <style>
-  #botonFlores{
-    position:fixed;
-    top:20px;
-    left:50%;
-    transform:translateX(-50%);
-    padding:15px 30px;
-    font-size:20px;
-    border:none;
-    border-radius:30px;
-    background:#ff4d88;
-    color:white;
-    cursor:pointer;
-    box-shadow:0 5px 15px rgba(0,0,0,.3);
-    z-index:9999;
-}
-
-#mensaje{
-    display:none;
-    position:fixed;
-    top:45%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    font-size:32px;
-    color:white;
-    background:rgba(255,0,100,.8);
-    padding:20px;
-    border-radius:20px;
-    z-index:9999;
-}
-
-.flor{
-    position:fixed;
-    top:-50px;
-    font-size:30px;
-    pointer-events:none;
-    animation:caer linear forwards;
-}
-
-@keyframes caer{
-    to{
-        transform:translateY(110vh) rotate(360deg);
-        opacity:0;
-    }
-}  
+ 
 body{
   <!DOCTYPE html>
 <html>
