@@ -7,22 +7,332 @@
 
     <style>
 
-        /* ===== AQUÍ PEGA TODO EL CSS ===== */
+/* =========================
+   GALAXIA
+========================= */
 
+.galaxia-app{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    background:radial-gradient(circle at center,#4b0082,#120024,#050510,#000);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    font-family:Arial,sans-serif;
+}
 
+.titulo{
+    position:absolute;
+    top:25px;
+    color:white;
+    font-size:40px;
+    text-shadow:0 0 20px #ff7bff;
+    z-index:20;
+}
+
+.stars{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 2px, transparent 2px),
+    radial-gradient(#ffd6ff 1px, transparent 1px);
+    background-size:90px 90px,150px 150px,220px 220px;
+    animation:moverEstrellas 80s linear infinite;
+}
+
+@keyframes moverEstrellas{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-600px);
+    }
+}
+
+.galaxia{
+    position:relative;
+    width:600px;
+    height:600px;
+}
+
+.corazon{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) rotate(-45deg);
+    width:120px;
+    height:120px;
+    background:#ff3ebf;
+    box-shadow:0 0 60px #ff4dd2;
+    animation:latido 2s infinite;
+}
+
+.corazon::before,
+.corazon::after{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    background:#ff3ebf;
+    border-radius:50%;
+}
+
+.corazon::before{
+    top:-60px;
+    left:0;
+}
+
+.corazon::after{
+    left:60px;
+    top:0;
+}
+
+@keyframes latido{
+    0%,100%{
+        transform:translate(-50%,-50%) rotate(-45deg) scale(1);
+    }
+    50%{
+        transform:translate(-50%,-50%) rotate(-45deg) scale(1.15);
+    }
+}
+
+/* ÓRBITAS */
+
+.orbita{
+    position:absolute;
+    left:50%;
+    top:50%;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+}
+
+.orbita1{
+    width:220px;
+    height:220px;
+    animation:girar 12s linear infinite;
+}
+
+.orbita2{
+    width:320px;
+    height:320px;
+    animation:girar 18s linear infinite;
+}
+
+.orbita3{
+    width:420px;
+    height:420px;
+    animation:girar 25s linear infinite;
+}
+
+.orbita4{
+    width:520px;
+    height:520px;
+    animation:girar 32s linear infinite;
+}
+
+@keyframes girar{
+    from{
+        transform:translate(-50%,-50%) rotate(0deg);
+    }
+    to{
+        transform:translate(-50%,-50%) rotate(360deg);
+    }
+}
+
+.planeta{
+    position:absolute;
+    top:-18px;
+    left:50%;
+    transform:translateX(-50%);
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#ff80d5,#8b5cf6);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    cursor:pointer;
+    box-shadow:0 0 25px #ff8ae2;
+    transition:.4s;
+}
+
+.planeta:hover{
+    transform:translateX(-50%) scale(1.2);
+    box-shadow:0 0 40px white;
+}
+
+#mensaje{
+    position:absolute;
+    bottom:40px;
+    color:white;
+    font-size:24px;
+    text-align:center;
+    text-shadow:0 0 10px #ff9df3;
+}
+.estrella{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 20px white;
+    animation:fugaz 2.5s linear forwards;
+}
+
+@keyframes fugaz{
+
+    0%{
+        transform:translate(0,0);
+        opacity:1;
+    }
+
+    100%{
+        transform:translate(-600px,350px);
+        opacity:0;
+    }
+
+}
+/* =========================
+   NEBULOSAS
+========================= */
+
+.nebulosa{
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:radial-gradient(circle,
+    rgba(255,0,255,.35),
+    rgba(120,0,255,.15),
+    transparent 70%);
+    filter:blur(50px);
+    animation:flotar 18s ease-in-out infinite alternate;
+}
+
+.nebulosa.dos{
+    top:5%;
+    right:-150px;
+    width:400px;
+    height:400px;
+    animation-duration:22s;
+}
+
+.nebulosa.tres{
+    bottom:-120px;
+    left:-120px;
+    width:600px;
+    height:600px;
+    animation-duration:28s;
+}
+
+@keyframes flotar{
+
+    0%{
+        transform:translate(0,0) scale(1);
+    }
+
+    50%{
+        transform:translate(40px,-30px) scale(1.1);
+    }
+
+    100%{
+        transform:translate(-30px,40px) scale(0.95);
+    }
+
+}
 
     </style>
 </head>
 <body>
+<div class="nebulosa"></div>
+<div class="nebulosa dos"></div>
+<div class="nebulosa tres"></div>
+<section class="galaxia-app">
+    <div class="stars"></div>
 
-    <!-- ===== AQUÍ PEGA EL HTML DE LA GALAXIA ===== -->
+    <h1 class="titulo">Nuestro Universo ❤️</h1>
 
+    <div class="galaxia">
+        <div class="corazon"></div>
+
+        <div class="orbita orbita1">
+            <div class="planeta" onclick="mostrar('Recuerdos')">📸</div>
+        </div>
+
+        <div class="orbita orbita2">
+            <div class="planeta" onclick="mostrar('Cartas')">💌</div>
+        </div>
+
+        <div class="orbita orbita3">
+            <div class="planeta" onclick="mostrar('Música')">🎵</div>
+        </div>
+
+        <div class="orbita orbita4">
+            <div class="planeta" onclick="mostrar('Videos')">🎥</div>
+        </div>
+    </div>
+
+    <div id="mensaje"></div>
+</section>
 
 
 
     <script>
+        
+    // =========================
+// MENSAJES DE LOS PLANETAS
+// =========================
 
-        // ===== AQUÍ PEGA TODO EL JAVASCRIPT =====
+const mensajes = {
+    "Recuerdos": "📸 Aquí podrás abrir una galería con nuestras fotos más especiales.",
+    "Cartas": "💌 Aquí estarán todas las cartas que escribí para ti.",
+    "Música": "🎵 Nuestra playlist favorita siempre estará aquí.",
+    "Videos": "🎥 En este planeta podrás ver nuestros videos y recuerdos."
+};
+
+function mostrar(planeta){
+
+    const mensaje = document.getElementById("mensaje");
+
+    mensaje.style.opacity = "0";
+
+    setTimeout(() => {
+        mensaje.innerHTML = mensajes[planeta];
+        mensaje.style.opacity = "1";
+    },200);
+
+}
+
+// =========================
+// ESTRELLAS FUGACES
+// =========================
+
+function crearEstrella(){
+
+    const estrella = document.createElement("div");
+
+    estrella.className = "estrella";
+
+    estrella.style.left = Math.random()*window.innerWidth+"px";
+    estrella.style.top = Math.random()*200+"px";
+
+    document.querySelector(".galaxia-app").appendChild(estrella);
+
+    setTimeout(()=>{
+        estrella.remove();
+    },2500);
+
+}
+
+setInterval(crearEstrella,1800);
+
 
 
 
