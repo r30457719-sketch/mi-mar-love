@@ -4,13 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuestro Universo ❤️</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-
-/* =========================
-   GALAXIA
-========================= */
-
+        
 .galaxia-app{
     position:relative;
     width:100%;
@@ -101,7 +97,6 @@
     }
 }
 
-/* ÓRBITAS */
 
 .orbita{
     position:absolute;
@@ -199,9 +194,6 @@
     }
 
 }
-/* =========================
-   NEBULOSAS
-========================= */
 
 .nebulosa{
     position:absolute;
@@ -247,7 +239,13 @@
     }
 
 }
-
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
     </style>
 </head>
 <body>
@@ -286,9 +284,6 @@
 
     <script>
         
-    // =========================
-// MENSAJES DE LOS PLANETAS
-// =========================
 
 const mensajes = {
     "Recuerdos": "📸 Aquí podrás abrir una galería con nuestras fotos más especiales.",
@@ -309,10 +304,6 @@ function mostrar(planeta){
     },200);
 
 }
-
-// =========================
-// ESTRELLAS FUGACES
-// =========================
 
 function crearEstrella(){
 
