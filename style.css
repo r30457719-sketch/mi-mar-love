@@ -3,12 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: 'Montserrat', sans-serif;
     background: #02070d;
     color: white;
-    overflow: hidden;
+    overflow-x: hidden;
+}
 }
 
 /* Pantalla principal */
