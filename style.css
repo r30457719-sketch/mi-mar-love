@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #02070d;
+    color: white;
+    overflow: hidden;
+}
+
+/* Pantalla principal */
+.inicio {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background:
+        radial-gradient(circle at 50% 35%, rgba(0, 90, 140, 0.25), transparent 45%),
+        linear-gradient(to bottom, #020912, #001522 60%, #02070d);
+}
+
+/* Efecto de agua */
+.inicio::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(ellipse at 50% 100%,
+        rgba(0, 120, 180, 0.22),
+        transparent 55%);
+
+    animation: agua 6s ease-in-out infinite alternate;
+}
+
+@keyframes agua {
+    from {
+        transform: translateY(0) scale(1);
+    }
+
+    to {
+        transform: translateY(-15px) scale(1.05);
+    }
+}
+
+/* Contenido */
+.contenido {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 30px;
+}
+
+.pequeno {
+    font-size: 12px;
+    letter-spacing: 6px;
+    color: #7ecfff;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(55px, 12vw, 110px);
+    font-weight: normal;
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 15px rgba(0, 170, 255, 0.35),
+        0 0 40px rgba(0, 110, 200, 0.2);
+}
+
+h1 span {
+    color: #73d8ff;
+}
+
+.frase {
+    color: #b8cbd5;
+    font-size: 17px;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+/* Botón */
+button {
+    border: 1px solid rgba(126, 207, 255, 0.5);
+    background: rgba(0, 80, 120, 0.15);
+    color: white;
+
+    padding: 16px 28px;
+    border-radius: 50px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.35s ease;
+
+    backdrop-filter: blur(10px);
+}
+
+button span {
+    margin-left: 10px;
+    color: #7ecfff;
+}
+
+button:hover {
+    background: rgba(0, 130, 190, 0.25);
+    border-color: #7ecfff;
+    box-shadow: 0 0 25px rgba(0, 160, 230, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Flecha inferior */
+.abajo {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+
+    color: #6faec5;
+    font-size: 22px;
+
+    animation: bajar 1.5s infinite;
+}
+
+@keyframes bajar {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translateY(8px);
+        opacity: 1;
+    }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+
+    .pequeno {
+        font-size: 10px;
+        letter-spacing: 4px;
+    }
+
+    .frase {
+        font-size: 15px;
+    }
+
+    button {
+        padding: 14px 22px;
+    }
+}
