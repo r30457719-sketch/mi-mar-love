@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi Mar — ¿Cuánto nos conocemos? ♡</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Pacifico&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="juego">
+
+    <header class="encabezado">
+        <h1>¿Cuánto nos conocemos? <span>♡</span></h1>
+        <p>Un pequeño viaje por nuestra historia.</p>
+    </header>
+
+    <section class="panel-juego" id="panelJuego">
+
+        <div class="progreso-info">
+            <span id="numeroPregunta">Pregunta 1 de 8</span>
+            <span id="marcador">♡ 0 puntos</span>
+        </div>
+
+        <div class="barra-progreso">
+            <div id="progreso"></div>
+        </div>
+
+        <div class="etiqueta" id="categoria">EL COMIENZO</div>
+
+        <h2 id="pregunta">¿Cuánto recuerdas?</h2>
+
+        <div class="opciones" id="opciones"></div>
+
+        <p id="mensaje" aria-live="polite"></p>
+
+        <button id="siguiente" class="boton-juego" hidden>
+            Siguiente pregunta →
+        </button>
+
+    </section>
+
+    <section class="panel-juego resultado" id="panelResultado" hidden>
+        <div class="corazon-final">♡</div>
+
+        <h2 id="tituloResultado">¡Terminaste!</h2>
+
+        <p id="textoResultado"></p>
+
+        <div class="puntuacion-final" id="puntuacionFinal"></div>
+
+        <button class="boton-juego" id="reintentar">
+            Volver a jugar ↻
+        </button>
+    </section>
+
+    <a class="volver" href="mundo.html">
+        ← Volver a nuestro mundo
+    </a>
+
+</main>
+
+<script>
+/*
+  IMPORTANTE:
+  Estas preguntas son ejemplos.
+  Cambia las preguntas, opciones y respuestaCorrecta
+  para que coincidan con vuestra historia real.
+
+  respuestaCorrecta empieza desde 0:
+  0 = primera opción
+  1 = segunda opción
+  2 = tercera opción
+  3 = cuarta opción
+*/
+
+const preguntas = [
+    {
+        categoria: "EL COMIENZO",
+        pregunta: "¿Dónde nos conocimos?",
+        opciones: [
+            "En el colegio",
+            "Por internet",
+            "En una salida",
+            "En otro lugar"
+        ],
+        respuestaCorrecta: 0
+    },
+    {
+        categoria: "EL COMIENZO",
+        pregunta: "¿Quién habló primero?",
+        opciones: [
+            "Rodri",
+            "Ella",
+            "Los dos al mismo tiempo",
+            "No lo recuerdo"
+        ],
+        respuestaCorrecta: 0
+    },
+    {
+        categoria: "NUESTROS RECUERDOS",
+        pregunta: "¿Qué recuerdo guardaríamos primero?",
+        opciones: [
+            "Una conversación",
+            "Una fotografía",
+            "Una salida",
+            "Una broma"
+        ],
+        respuestaCorrecta: 1
+    },
+    {
+        categoria: "SOBRE MÍ",
+        pregunta: "¿Qué actividad me gusta más?",
+        opciones: [
+            "Jugar fútbol",
+            "Ver películas",
+            "Jugar videojuegos",
+            "Escuchar música"
+        ],
+        respuestaCorrecta: 0
+    },
+    {
+        categoria: "SOBRE NOSOTROS",
+        pregunta: "¿Qué disfrutamos hacer juntos?",
+        opciones: [
+            "Hablar durante horas",
+            "Salir a pasear",
+            "Tomarnos fotos",
+            "Todas las anteriores"
+        ],
+        respuestaCorrecta: 3
+    },
+    {
+        categoria: "PEQUEÑOS DETALLES",
+        pregunta: "¿Qué detalle recuerdo de ti?",
+        opciones: [
+            "Tu sonrisa",
+            "Tu forma de hablar",
+            "Tu mirada",
+            "Otro detalle"
+        ],
+        respuestaCorrecta: 0
+    },
+    {
+        categoria: "NUESTROS MOMENTOS",
+        pregunta: "¿Qué nos hace reír juntos?",
+        opciones: [
+            "Nuestras bromas",
+            "Los memes",
+            "Las ocurrencias",
+            "Todas las anteriores"
+        ],
+        respuestaCorrecta: 3
+    },
+    {
+        categoria: "HASTA HOY",
+        pregunta: "¿Qué es importante en nuestra historia?",
+        opciones: [
+            "Los recuerdos",
+            "La confianza",
+            "La comunicación",
+            "Todo lo anterior"
+        ],
+        respuestaCorrecta: 3
+    }
+];
+
+let indice = 0;
+let puntos = 0;
+let respondida = false;
+
+const panelJuego = document.getElementById("panelJuego");
+const panelResultado = document.getElementById("panelResultado");
+const preguntaTexto = document.getElementById("pregunta");
+const opcionesDiv = document.getElementById("opciones");
+const mensaje = document.getElementById("mensaje");
+const siguiente = document.getElementById("siguiente");
+
+function mostrarPregunta() {
+    respondida = false;
+
+    const actual = preguntas[indice];
+
+    document.getElementById("numeroPregunta").textContent =
+        `Pregunta ${indice + 1} de ${preguntas.length}`;
+
+    document.getElementById("marcador").textContent =
+        `♡ ${puntos} puntos`;
+
+    document.getElementById("categoria").textContent =
+        actual.categoria;
+
+    preguntaTexto.textContent = actual.pregunta;
+
+    document.getElementById("progreso").style.width =
+        `${(indice / preguntas.length) * 100}%`;
+
+    opcionesDiv.innerHTML = "";
+    mensaje.textContent = "";
+    siguiente.hidden = true;
+
+    actual.opciones.forEach((opcion, i) => {
+        const boton = document.createElement("button");
+
+        boton.className = "opcion";
+        boton.textContent = opcion;
+
+        boton.addEventListener("click", () => elegirRespuesta(i));
+
+        opcionesDiv.appendChild(boton);
+    });
+}
+
+function elegirRespuesta(seleccion) {
+    if (respondida) return;
+
+    respondida = true;
+
+    const actual = preguntas[indice];
+    const botones = opcionesDiv.querySelectorAll(".opcion");
+
+    botones.forEach((boton, i) => {
+        boton.disabled = true;
+
+        if (i === actual.respuestaCorrecta) {
+            boton.classList.add("correcta");
+        }
+
+        if (i === seleccion && seleccion !== actual.respuestaCorrecta) {
+            boton.classList.add("incorrecta");
+        }
+    });
+
+    if (seleccion === actual.respuestaCorrecta) {
+        puntos++;
+        mensaje.textContent = "¡Correcto! ♡ +1 punto";
+        mensaje.className = "mensaje-correcto";
+    } else {
+        mensaje.textContent = "¡Buen intento! La respuesta correcta está marcada.";
+        mensaje.className = "mensaje-error";
+    }
+
+    document.getElementById("marcador").textContent =
+        `♡ ${puntos} puntos`;
+
+    document.getElementById("progreso").style.width =
+        `${((indice + 1) / preguntas.length) * 100}%`;
+
+    siguiente.textContent =
+        indice === preguntas.length - 1
+            ? "Ver resultado ♡"
+            : "Siguiente pregunta →";
+
+    siguiente.hidden = false;
+}
+
+siguiente.addEventListener("click", () => {
+    indice++;
+
+    if (indice < preguntas.length) {
+        mostrarPregunta();
+    } else {
+        mostrarResultado();
+    }
+});
+
+function mostrarResultado() {
+    panelJuego.hidden = true;
+    panelResultado.hidden = false;
+
+    const total = preguntas.length;
+    const porcentaje = Math.round((puntos / total) * 100);
+
+    document.getElementById("puntuacionFinal").textContent =
+        `${puntos} de ${total} puntos`;
+
+    document.getElementById("progreso").style.width = "100%";
+
+    let titulo;
+    let texto;
+
+    if (porcentaje === 100) {
+        titulo = "¡Lo recuerdas todo! 🌊";
+        texto = "Cada detalle cuenta. ¡Resultado perfecto!";
+    } else if (porcentaje >= 75) {
+        titulo = "¡Conoces muy bien nuestra historia! ♡";
+        texto = "Hay muchos recuerdos que tienes presentes.";
+    } else if (porcentaje >= 50) {
+        titulo = "¡Vamos por más recuerdos!";
+        texto = "Todavía quedan detalles por descubrir.";
+    } else {
+        titulo = "¡Esto apenas comienza! 🌱";
+        texto = "Siempre hay algo nuevo que podemos aprender.";
+    }
+
+    document.getElementById("tituloResultado").textContent = titulo;
+    document.getElementById("textoResultado").textContent = texto;
+}
+
+document.getElementById("reintentar").addEventListener("click", () => {
+    indice = 0;
+    puntos = 0;
+
+    panelResultado.hidden = true;
+    panelJuego.hidden = false;
+
+    mostrarPregunta();
+});
+
+mostrarPregunta();
+</script>
+
+</body>
+</html>
