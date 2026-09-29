@@ -386,3 +386,243 @@ footer {
         height: 300px;
     }
 }
+/* ============================= */
+/* NUESTRA HISTORIA              */
+/* ============================= */
+
+.historia {
+    min-height: 100vh;
+    padding: 50px 25px 70px;
+
+    background:
+        radial-gradient(circle at 50% 0%, rgba(0, 100, 160, 0.25), transparent 40%),
+        linear-gradient(to bottom, #020912, #001522 60%, #02070d);
+
+    color: white;
+}
+
+.linea-tiempo {
+    position: relative;
+
+    max-width: 1000px;
+    margin: 70px auto;
+
+    padding: 20px 0;
+}
+
+/* Línea central */
+
+.linea-tiempo::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: 50%;
+
+    width: 2px;
+
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        #4fcfff,
+        rgba(79, 207, 255, 0.3),
+        #4fcfff,
+        transparent
+    );
+
+    transform: translateX(-50%);
+}
+
+/* Cada momento */
+
+.momento {
+    position: relative;
+
+    width: 50%;
+
+    padding: 25px 45px;
+
+    margin-bottom: 35px;
+}
+
+/* Alternar lados */
+
+.momento:nth-child(odd) {
+    left: 0;
+
+    text-align: right;
+}
+
+.momento:nth-child(even) {
+    left: 50%;
+
+    text-align: left;
+}
+
+/* Punto de la línea */
+
+.punto {
+    position: absolute;
+
+    top: 45px;
+
+    width: 16px;
+    height: 16px;
+
+    border-radius: 50%;
+
+    background: #73d8ff;
+
+    box-shadow:
+        0 0 10px #73d8ff,
+        0 0 25px rgba(0, 180, 255, 0.6);
+
+    z-index: 2;
+}
+
+.momento:nth-child(odd) .punto {
+    right: -8px;
+}
+
+.momento:nth-child(even) .punto {
+    left: -8px;
+}
+
+/* Tarjeta */
+
+.contenido-momento {
+    padding: 25px;
+
+    background: rgba(4, 30, 45, 0.72);
+
+    border: 1px solid rgba(100, 200, 255, 0.18);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.35s ease;
+}
+
+.contenido-momento:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(100, 210, 255, 0.5);
+
+    box-shadow:
+        0 15px 45px rgba(0, 120, 200, 0.18);
+}
+
+/* Fecha */
+
+.fecha {
+    color: #73d8ff;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    font-weight: 600;
+}
+
+/* Título */
+
+.contenido-momento h2 {
+    margin: 10px 0;
+
+    font-size: 21px;
+
+    font-weight: 500;
+}
+
+/* Texto */
+
+.contenido-momento p {
+    color: #91aab5;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    margin-bottom: 18px;
+}
+
+/* Foto */
+
+.contenido-momento img {
+    width: 100%;
+
+    max-height: 260px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+
+    display: block;
+
+    transition: 0.4s ease;
+}
+
+.contenido-momento:hover img {
+    transform: scale(1.02);
+}
+
+
+/* ============================= */
+/* CELULAR                       */
+/* ============================= */
+
+@media (max-width: 750px) {
+
+    .historia {
+        padding: 35px 18px 60px;
+    }
+
+    .linea-tiempo {
+        margin-top: 50px;
+    }
+
+    /* La línea pasa al lado izquierdo */
+
+    .linea-tiempo::before {
+        left: 12px;
+    }
+
+    .momento,
+    .momento:nth-child(even),
+    .momento:nth-child(odd) {
+        width: 100%;
+
+        left: 0;
+
+        padding: 20px 0 20px 40px;
+
+        text-align: left;
+    }
+
+    .punto,
+    .momento:nth-child(odd) .punto,
+    .momento:nth-child(even) .punto {
+        left: 4px;
+        right: auto;
+    }
+
+    .contenido-momento {
+        padding: 22px;
+    }
+
+    .contenido-momento h2 {
+        font-size: 19px;
+    }
+
+    .contenido-momento p {
+        font-size: 13px;
+    }
+
+    .contenido-momento img {
+        max-height: 300px;
+    }
+}
