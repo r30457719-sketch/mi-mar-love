@@ -626,3 +626,200 @@ footer {
         max-height: 300px;
     }
 }
+/* ============================= */
+/* JUEGO: CUANTO NOS CONOCEMOS   */
+/* ============================= */
+
+.juego {
+    min-height: 100vh;
+    padding: 45px 20px 60px;
+
+    background:
+        radial-gradient(circle at 50% 0%, rgba(0, 100, 160, 0.25), transparent 40%),
+        linear-gradient(to bottom, #020912, #001522 60%, #02070d);
+
+    color: white;
+}
+
+.panel-juego {
+    max-width: 650px;
+    margin: 45px auto 0;
+    padding: 30px;
+
+    background: rgba(4, 30, 45, 0.72);
+    border: 1px solid rgba(100, 200, 255, 0.2);
+    border-radius: 22px;
+
+    backdrop-filter: blur(10px);
+}
+
+.progreso-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+
+    color: #91aab5;
+    font-size: 12px;
+}
+
+.barra-progreso {
+    height: 5px;
+    margin: 16px 0 30px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progreso {
+    width: 0;
+    height: 100%;
+
+    background: #73d8ff;
+    box-shadow: 0 0 12px rgba(115, 216, 255, 0.6);
+
+    transition: width 0.4s ease;
+}
+
+.etiqueta {
+    color: #73d8ff;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.panel-juego h2 {
+    font-size: 23px;
+    line-height: 1.5;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.opciones {
+    display: grid;
+    gap: 12px;
+}
+
+.opcion {
+    width: 100%;
+    padding: 16px;
+
+    color: #dceaf0;
+    text-align: left;
+
+    background: rgba(0, 20, 35, 0.65);
+    border: 1px solid rgba(100, 200, 255, 0.18);
+    border-radius: 13px;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.opcion:hover:not(:disabled) {
+    border-color: #73d8ff;
+    background: rgba(0, 100, 150, 0.2);
+}
+
+.opcion.correcta {
+    border-color: #69e6b1;
+    background: rgba(30, 150, 100, 0.16);
+    color: #a8f5d2;
+}
+
+.opcion.incorrecta {
+    border-color: #ff8585;
+    background: rgba(180, 50, 65, 0.16);
+    color: #ffb2b2;
+}
+
+.opcion:disabled {
+    cursor: default;
+}
+
+#mensaje {
+    min-height: 24px;
+    margin-top: 20px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.mensaje-correcto {
+    color: #8cefc1;
+}
+
+.mensaje-error {
+    color: #ffb2b2;
+}
+
+.boton-juego {
+    display: block;
+    width: 100%;
+    margin-top: 18px;
+    padding: 15px 20px;
+
+    color: white;
+    background: rgba(0, 100, 150, 0.22);
+    border: 1px solid rgba(126, 207, 255, 0.5);
+    border-radius: 40px;
+
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.boton-juego:hover {
+    background: rgba(0, 130, 190, 0.3);
+    border-color: #73d8ff;
+}
+
+.resultado {
+    text-align: center;
+}
+
+.corazon-final {
+    color: #73d8ff;
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.resultado h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.resultado p {
+    color: #91aab5;
+    line-height: 1.7;
+}
+
+.puntuacion-final {
+    margin: 25px 0;
+    color: #73d8ff;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .juego {
+        padding: 30px 15px 45px;
+    }
+
+    .panel-juego {
+        padding: 22px 18px;
+        margin-top: 30px;
+    }
+
+    .panel-juego h2 {
+        font-size: 20px;
+    }
+
+    .opcion {
+        padding: 15px;
+        font-size: 13px;
+    }
+
+    .resultado h2 {
+        font-size: 25px;
+    }
+}
