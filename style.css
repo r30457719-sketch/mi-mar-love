@@ -823,3 +823,211 @@ footer {
         font-size: 25px;
     }
 }
+/* =========================
+   CARTAS
+========================= */
+
+.cartas {
+    min-height: 100vh;
+    padding: 50px 25px 70px;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(0, 100, 160, 0.25), transparent 40%),
+        linear-gradient(to bottom, #020912, #001522 60%, #02070d);
+    color: white;
+}
+
+.cartas-grid {
+    max-width: 1000px;
+    margin: 55px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.carta {
+    padding: 35px 25px;
+    text-align: center;
+    background: rgba(4, 30, 45, 0.72);
+    border: 1px solid rgba(100, 200, 255, 0.18);
+    border-radius: 22px;
+    backdrop-filter: blur(10px);
+    transition: 0.4s ease;
+    cursor: pointer;
+}
+
+.carta:hover {
+    transform: translateY(-10px);
+    border-color: rgba(115, 216, 255, 0.65);
+    box-shadow:
+        0 15px 45px rgba(0, 120, 200, 0.2),
+        0 0 25px rgba(0, 160, 230, 0.08);
+}
+
+.sobre {
+    width: 80px;
+    height: 65px;
+    margin: 0 auto 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: #73d8ff;
+    background: rgba(0, 100, 150, 0.18);
+    border: 1px solid rgba(115, 216, 255, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0, 160, 230, 0.1);
+    transition: 0.4s ease;
+}
+
+.carta:hover .sobre {
+    transform: translateY(-5px) rotate(-3deg);
+    box-shadow: 0 0 30px rgba(115, 216, 255, 0.25);
+}
+
+.carta h2 {
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.carta p {
+    color: #91aab5;
+    font-size: 13px;
+    line-height: 1.7;
+    min-height: 65px;
+}
+
+.carta button {
+    margin-top: 20px;
+    padding: 11px 20px;
+    font-size: 12px;
+}
+
+
+/* =========================
+   VENTANA DE LA CARTA
+========================= */
+
+.ventana-carta {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 5, 12, 0.82);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.35s ease;
+    z-index: 1000;
+}
+
+.ventana-carta.mostrar {
+    opacity: 1;
+    visibility: visible;
+}
+
+.contenido-carta {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    padding: 45px 35px;
+    text-align: center;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8, 38, 55, 0.98),
+            rgba(2, 15, 25, 0.98)
+        );
+    border: 1px solid rgba(115, 216, 255, 0.3);
+    border-radius: 25px;
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(0, 150, 220, 0.12);
+    transform: translateY(30px) scale(0.95);
+    transition: 0.4s ease;
+}
+
+.ventana-carta.mostrar .contenido-carta {
+    transform: translateY(0) scale(1);
+}
+
+.cerrar {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 25px;
+    line-height: 1;
+    color: #91aab5;
+    background: transparent;
+    border: 1px solid rgba(115, 216, 255, 0.15);
+}
+
+.cerrar:hover {
+    color: white;
+    background: rgba(0, 120, 180, 0.2);
+}
+
+.sobre-grande {
+    font-size: 55px;
+    color: #73d8ff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 25px rgba(115, 216, 255, 0.3);
+}
+
+#etiquetaCarta {
+    color: #73d8ff;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+#tituloCarta {
+    margin: 12px 0 20px;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+#textoCarta {
+    color: #b4c8d1;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+
+/* =========================
+   MÓVIL
+========================= */
+
+@media (max-width: 750px) {
+
+    .cartas {
+        padding: 35px 18px 60px;
+    }
+
+    .cartas-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-top: 40px;
+    }
+
+    .carta {
+        padding: 30px 22px;
+    }
+
+    .contenido-carta {
+        padding: 40px 25px;
+    }
+
+    #tituloCarta {
+        font-size: 22px;
+    }
+
+    #textoCarta {
+        font-size: 14px;
+    }
+}
