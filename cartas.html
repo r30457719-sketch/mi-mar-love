@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi Mar — Cartas ❤️</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Pacifico&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="cartas">
+
+    <header class="encabezado">
+        <h1>Cartas <span>♡</span></h1>
+        <p>Algunas palabras que merecen quedarse aquí.</p>
+    </header>
+
+    <section class="cartas-grid">
+
+        <div class="carta" onclick="abrirCarta(1)">
+            <div class="sobre">✉</div>
+            <h2>Una carta para ti</h2>
+            <p>Ábrela cuando quieras leer unas palabras especiales.</p>
+            <button>Leer carta →</button>
+        </div>
+
+        <div class="carta" onclick="abrirCarta(2)">
+            <div class="sobre">✉</div>
+            <h2>Para un día difícil</h2>
+            <p>Un pequeño mensaje para esos días que no salen como esperabas.</p>
+            <button>Leer carta →</button>
+        </div>
+
+        <div class="carta" onclick="abrirCarta(3)">
+            <div class="sobre">✉</div>
+            <h2>Para recordar nuestra historia</h2>
+            <p>Un lugar para guardar las palabras de nuestros recuerdos.</p>
+            <button>Leer carta →</button>
+        </div>
+
+    </section>
+
+    <a class="volver" href="mundo.html">
+        ← Volver a nuestro mundo
+    </a>
+
+</main>
+
+
+<!-- VENTANA DE LA CARTA -->
+
+<div id="ventanaCarta" class="ventana-carta">
+
+    <div class="contenido-carta">
+
+        <button class="cerrar" onclick="cerrarCarta()">×</button>
+
+        <div class="sobre-grande">✉</div>
+
+        <span id="etiquetaCarta">CARTA</span>
+
+        <h2 id="tituloCarta"></h2>
+
+        <p id="textoCarta"></p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const cartas = {
+
+    1: {
+        titulo: "Una carta para ti",
+        texto: "Aquí puedes escribir tus propias palabras. Este espacio está pensado para guardar un mensaje especial que quieras conservar dentro de Mi Mar."
+    },
+
+    2: {
+        titulo: "Para un día difícil",
+        texto: "Aquí puedes escribir un mensaje para esos momentos en los que haga falta recordar los buenos momentos, respirar y seguir adelante."
+    },
+
+    3: {
+        titulo: "Para recordar nuestra historia",
+        texto: "Aquí puedes escribir algo sobre los momentos, recuerdos y experiencias que quieras conservar dentro de esta pequeña historia."
+    }
+
+};
+
+
+function abrirCarta(numero) {
+
+    document.getElementById("tituloCarta").textContent =
+        cartas[numero].titulo;
+
+    document.getElementById("textoCarta").textContent =
+        cartas[numero].texto;
+
+    document.getElementById("ventanaCarta").classList.add("mostrar");
+}
+
+
+function cerrarCarta() {
+
+    document.getElementById("ventanaCarta").classList.remove("mostrar");
+
+}
+
+</script>
+
+</body>
+</html>
